@@ -3,10 +3,10 @@ const router = express.Router();
 const todoSchema = require("../schema/todoSchema");
 const mongoose = require("mongoose");
 const Todo = mongoose.model("todo", todoSchema);
-
+const checkLogin = require("../midddlewares/checkLogin");
 //routes
 // get all todos
-router.get("/", (req, res) => {
+router.get("/", checkLogin, (req, res) => {
   Todo.find({ status: "active" }, (err, data) => {
     if (err) {
       res.status(500).json({

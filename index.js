@@ -20,12 +20,14 @@ mongoose
 app.use("/todo", todoRoutes);
 app.use("/user", userRoutes);
 // default error handler
-function errorHandler(err, req, res, next) {
+const errorHandler = (err, req, res, next) => {
   if (req.headersSent) {
     return next(err);
   }
   res.status(500).json({ error: err });
-}
+};
+app.use(errorHandler);
+// listing app
 app.listen(3000, () => {
   console.log("listing to app 3000");
 });

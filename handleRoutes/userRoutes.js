@@ -5,6 +5,7 @@ const userSchema = require("../schema/userSchema");
 const mongoose = require("mongoose");
 const User = mongoose.model("user", userSchema);
 const jwt = require("jsonwebtoken");
+
 //routes
 // singup users
 router.post("/signup", async (req, res) => {
